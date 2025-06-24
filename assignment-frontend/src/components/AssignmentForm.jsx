@@ -19,7 +19,7 @@ function AssignmentForm() {
   // 🔁 Fetch assignments
   const fetchAssignments = async () => {
     try {
-      const res = await axios.get("http://localhost:3999/assignments");
+      const res = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/assignments`);
       setAssignments(res.data);
     } catch (err) {
       console.error("Failed to fetch assignments:", err);
@@ -48,7 +48,7 @@ function AssignmentForm() {
     }
 
     try {
-      await axios.post("http://localhost:3999/assignments", data);
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/assignments`, data);
       alert("✅ Assignment submitted successfully!");
 
       // Reset form
@@ -270,7 +270,7 @@ function AssignmentForm() {
 
           {a.attachment && (
             <a
-              href={`http://localhost:3999/uploads/${a.attachment}`}
+              href={`${import.meta.env.VITE_BACKEND_URL}/uploads/${a.attachment}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm text-blue-600 underline"
@@ -283,7 +283,6 @@ function AssignmentForm() {
     </div>
   )}
 </div>
-
     </>
   );
 }
