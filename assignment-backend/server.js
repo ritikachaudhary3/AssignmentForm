@@ -6,7 +6,10 @@ const Assignment = require("./Models/Assignment");
 require("./db");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: "https://assignmentform-1.onrender.com", // ✅ your frontend URL on Render
+  credentials: true,
+}));
 app.use(express.json());
 app.use("/uploads", express.static("uploads")); // Serve uploaded files
 
